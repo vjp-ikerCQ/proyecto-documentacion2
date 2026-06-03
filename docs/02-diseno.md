@@ -60,3 +60,4 @@ A continuación se detallan los paquetes y las versiones iniciales seleccionadas
 | **Netdata** | 1.39 | Herramienta de monitorización en tiempo real |
 | **UFW** | 0.36 | Cortafuegos para asegurar puertos del sistema |
 | **rsync** | 3.2.7 | Herramienta de replicación para copias de seguridad |
+| **Certbot** | 2.9 | SSL/TLS automático (añadido) |
