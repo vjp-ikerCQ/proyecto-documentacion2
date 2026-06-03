@@ -34,6 +34,17 @@ graph TD
     Netdata -->|Puerto 19999| Admin
 ```
 
+### 🚪 Puertos de Comunicación Utilizados
+
+Para garantizar la seguridad de la plataforma, el cortafuegos UFW gestionará la apertura de los siguientes puertos:
+
+| Puerto | Protocolo | Servicio | Origen Permitido | Descripción |
+| :--- | :--- | :--- | :--- | :--- |
+| **80** | TCP | HTTP | Cualquier origen | Tráfico web no cifrado (redirección) |
+| **443** | TCP | HTTPS | Cualquier origen | Tráfico web seguro (producción) |
+| **22** | TCP | SSH | IP de Oficina (`192.168.1.0/24`) | Acceso de administración remota |
+| **19999** | TCP | Netdata | Localhost / Túnel SSH | Panel web de monitorización |
+
 ---
 
 ## 🛠️ Especificación y Versiones de Software
