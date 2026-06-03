@@ -5,16 +5,16 @@ Este archivo sirve para registrar y realizar el seguimiento de las tareas y camb
 ## 🚀 Issues de GitHub Registrados
 
 ### 🔴 [Issue #1] Añadir balanceador HAProxy a la infraestructura
-*   **Estado:** En curso
+*   **Estado:** Completado ✅
 *   **Asignados:** Iker Clemente Quijada (Miembro A) y Colaborador de Sistemas (Miembro B)
 *   **Prioridad:** Alta (Cambio de alcance solicitado por el cliente)
 *   **Descripción:** 
     El cliente ha solicitado agregar alta disponibilidad básica colocando un balanceador de carga HAProxy delante del servidor Apache actual. Se requiere documentar el diagrama actualizado y la configuración del balanceador.
 *   **Subtareas:**
-    *   [ ] Actualizar el diagrama de arquitectura y la tabla de componentes en `docs/02-diseno.md` (Asignado a: **Miembro A**)
-    *   [ ] Crear cronograma y planificación de tiempos en `docs/03-planificacion.md` (Asignado a: **Miembro A**)
-    *   [ ] Escribir guía de instalación y configuración de HAProxy en `docs/04-instalacion/servidor-web.md` (Asignado a: **Miembro B**)
-    *   [ ] Añadir comandos de comprobación y mantenimiento de HAProxy en `docs/05-operacion.md` (Asignado a: **Miembro B**)
+    *   [x] Actualizar el diagrama de arquitectura y la tabla de componentes en `docs/02-diseno.md` (Asignado a: **Miembro A**)
+    *   [x] Crear cronograma y planificación de tiempos en `docs/03-planificacion.md` (Asignado a: **Miembro A**)
+    *   [x] Escribir guía de instalación y configuración de HAProxy en `docs/04-instalacion/servidor-web.md` (Asignado a: **Miembro B**)
+    *   [x] Añadir comandos de comprobación y mantenimiento de HAProxy en `docs/05-operacion.md` (Asignado a: **Miembro B**)
 
 ---
 

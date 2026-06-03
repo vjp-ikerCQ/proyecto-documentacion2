@@ -2,6 +2,21 @@
 
 Todos los cambios notables en este proyecto serán documentados en este archivo.
 
+## [v1.0.0] - 2026-06-03 (Sesión 4)
+
+### Añadido
+- **Cambio de Alcance:** Integración del balanceador de carga HAProxy en la infraestructura.
+- **Planificación:** Nuevo cronograma [03-planificacion.md](docs/03-planificacion.md) utilizando diagrama de Gantt de Mermaid.
+- **Reflexiones:** Archivo [REVISION.md](REVISION.md) con el balance final, comandos Git utilizados y análisis de roles.
+
+### Modificado
+- [02-diseno.md](docs/02-diseno.md): Actualizado diagrama de red incluyendo el balanceador de carga HAProxy en frente de Apache y puertos mapeados.
+- [servidor-web.md](docs/04-instalacion/servidor-web.md): Añadida sección de configuración de puertos en Apache (8080) e instalación/configuración de HAProxy (80).
+- [05-operacion.md](docs/05-operacion.md): Añadidas tareas de monitorización y comandos para comprobar el estado y sintaxis de HAProxy.
+- [tareas.md](tareas.md): Actualizado backlog con el cierre del Issue #1 (HAProxy).
+
+---
+
 ## [v0.3.0] - 2026-06-03 (Sesión 3)
 
 ### Añadido
