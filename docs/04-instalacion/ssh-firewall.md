@@ -41,6 +41,30 @@ El servicio OpenSSH permite la administración del sistema. Para asegurar el acc
 
 ---
 
-## Reglas UFW
-- Permitir SSH solo desde IP de la oficina: `ufw allow from 192.168.1.0/24 to any port 22`
-- Permitir tráfico web: `ufw allow 80/tcp` y `ufw allow 443/tcp`
+## Configuración del Firewall con UFW
+
+Para asegurar el servidor, estableceremos una política por defecto restrictiva y permitiremos únicamente los servicios esenciales.
+
+1.  **Establecer políticas por defecto:**
+    ```bash
+    sudo ufw default deny incoming
+    sudo ufw default allow outgoing
+    ```
+2.  **Permitir tráfico web (puertos 80 y 443):**
+    ```bash
+    sudo ufw allow 80/tcp
+    sudo ufw allow 443/tcp
+    ```
+3.  **Permitir SSH seguro (restringido a la IP de la oficina):**
+    ```bash
+    # Permitir SSH (puerto alternativo 2222) solo desde la subred de la oficina
+    sudo ufw allow from 192.168.1.0/24 to any port 2222 proto tcp
+    ```
+4.  **Habilitar el cortafuegos:**
+    ```bash
+    sudo ufw enable
+    ```
+5.  **Verificar el estado de las reglas:**
+    ```bash
+    sudo ufw status verbose
+    ```
