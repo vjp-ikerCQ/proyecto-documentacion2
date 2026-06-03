@@ -48,6 +48,10 @@ find "$BACKUP_DIR" -type f -mtime +$RETENTION_DAYS -name "*.gz" -delete
 echo "Copia de seguridad completada con éxito el $DATE"
 ```
 
+> [!WARNING]
+> **Requisito de Seguridad de Rsync:**
+> El script utiliza autenticación mediante clave pública SSH para conectarse al servidor NAS remoto (`192.168.1.100`) de forma no interactiva. Se debe generar un par de claves SSH para el usuario `root` (`ssh-keygen`) y copiar la clave pública al archivo `authorized_keys` del usuario `backup-user` en el NAS para evitar la petición manual de contraseña.
+
 ---
 
 ## ⏰ Automatización con Cron
