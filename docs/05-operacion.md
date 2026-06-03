@@ -58,3 +58,27 @@ Es crucial revisar regularmente los registros para detectar fallos o intentos de
     ```bash
     tail -n 20 /var/log/backup-pyme.log
     ```
+
+---
+
+## 🔀 Operación y Mantenimiento de HAProxy
+
+Para garantizar el balanceo y la correcta derivación de peticiones:
+
+*   **Verificar el estado del balanceador:**
+    ```bash
+    sudo systemctl status haproxy
+    ```
+*   **Verificar la sintaxis de la configuración (útil antes de reiniciar):**
+    ```bash
+    sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+    ```
+*   **Revisar los registros de HAProxy en tiempo real:**
+    ```bash
+    sudo tail -n 50 /var/log/haproxy.log
+    ```
+*   **Estadísticas en consola (opcional):**
+    Si la configuración incluye el panel de estadísticas, comprueba el estado visitando `http://localhost/haproxy?stats` en tu navegador o mediante curl:
+    ```bash
+    curl -I http://127.0.0.1/haproxy?stats
+    ```

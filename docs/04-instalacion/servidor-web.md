@@ -75,3 +75,49 @@ Para validar el funcionamiento del intérprete PHP con Apache:
     ```bash
     sudo rm /var/www/html/pyme/info.php
     ```
+
+---
+
+## 🔀 Integración del Balanceador de Carga (HAProxy)
+
+Para implementar el balanceador de carga HAProxy en el puerto `80` (y `443` en producción), reconfiguraremos Apache para escuchar en el puerto local `8080`.
+
+### 1. Cambiar el Puerto de Apache a 8080
+1.  Editar `/etc/apache2/ports.conf` y cambiar `Listen 80` por `Listen 8080`:
+    ```bash
+    sudo sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf
+    ```
+2.  Editar el archivo del VirtualHost `/etc/apache2/sites-available/pyme.conf` y cambiar `<VirtualHost *:80>` a `<VirtualHost *:8080>`:
+    ```bash
+    sudo sed -i 's/<VirtualHost \*:80>/<VirtualHost \*:8080>/' /etc/apache2/sites-available/pyme.conf
+    ```
+3.  Reiniciar Apache para aplicar los cambios:
+    ```bash
+    sudo systemctl restart apache2
+    ```
+
+### 2. Instalar y Configurar HAProxy
+1.  Instalar HAProxy:
+    ```bash
+    sudo apt install -y haproxy
+    ```
+2.  Editar la configuración principal `/etc/haproxy/haproxy.cfg`:
+    ```bash
+    sudo nano /etc/haproxy/haproxy.cfg
+    ```
+3.  Añadir al final del archivo la definición del backend y frontend:
+    ```haproxy
+    frontend http_front
+        bind *:80
+        stats uri /haproxy?stats
+        default_backend apache_back
+
+    backend apache_back
+        balance roundrobin
+        server apache_node1 127.0.0.1:8080 check
+    ```
+4.  Reiniciar HAProxy:
+    ```bash
+    sudo systemctl restart haproxy
+    ```
+
