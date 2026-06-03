@@ -54,9 +54,10 @@ A continuación se detallan los paquetes y las versiones iniciales seleccionadas
 | Componente | Versión Inicial | Descripción / Notas |
 | :--- | :--- | :--- |
 | **Ubuntu Server** | 22.04 LTS | Sistema operativo base de la infraestructura |
-| **Apache** | 2.4.57 | Servidor web HTTP/HTTPS |
+| **Apache** | 2.4.59 | Servidor web HTTP/HTTPS |
 | **MySQL Server** | 8.0 | Gestor de base de datos relacional |
 | **PHP** | 8.1 | Intérprete para la aplicación web y de gestión |
 | **Netdata** | 1.39 | Herramienta de monitorización en tiempo real |
 | **UFW** | 0.36 | Cortafuegos para asegurar puertos del sistema |
 | **rsync** | 3.2.7 | Herramienta de replicación para copias de seguridad |
+| **Certbot** | 2.9 | SSL/TLS automático (añadido) |
