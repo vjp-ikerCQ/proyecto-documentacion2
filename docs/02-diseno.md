@@ -15,10 +15,11 @@ graph TD
 
     subgraph Firewall UFW
         PortHTTP[Puerto 80/443 Web]
-        PortSSH[Puerto 22 SSH restringido]
+        PortSSH[Puerto 2222 SSH restringido]
     end
 
     subgraph Servidor Ubuntu 22.04 LTS
+        HAProxy[Balanceador HAProxy]
         Apache[Servidor Apache]
         PHP[PHP 8.1]
         MySQL[(Base de Datos MySQL)]
@@ -27,7 +28,8 @@ graph TD
 
     User -->|HTTP/HTTPS| PortHTTP
     Admin -->|SSH IP Oficina| PortSSH
-    PortHTTP --> Apache
+    PortHTTP --> HAProxy
+    HAProxy -->|Proxy Local: 8080| Apache
     PortSSH --> Apache
     Apache --> PHP
     PHP -->|Localhost| MySQL
@@ -40,9 +42,9 @@ Para garantizar la seguridad de la plataforma, el cortafuegos UFW gestionará la
 
 | Puerto | Protocolo | Servicio | Origen Permitido | Descripción |
 | :--- | :--- | :--- | :--- | :--- |
-| **80** | TCP | HTTP | Cualquier origen | Tráfico web no cifrado (redirección) |
-| **443** | TCP | HTTPS | Cualquier origen | Tráfico web seguro (producción) |
-| **22** | TCP | SSH | IP de Oficina (`192.168.1.0/24`) | Acceso de administración remota |
+| **80** | TCP | HTTP (HAProxy) | Cualquier origen | Tráfico web no cifrado redirigido a HTTPS |
+| **443** | TCP | HTTPS (HAProxy)| Cualquier origen | Tráfico web seguro y balanceado |
+| **2222** | TCP | SSH | IP de Oficina (`192.168.1.0/24`) | Acceso de administración remota |
 | **19999** | TCP | Netdata | Localhost / Túnel SSH | Panel web de monitorización |
 
 ---
@@ -54,10 +56,11 @@ A continuación se detallan los paquetes y las versiones iniciales seleccionadas
 | Componente | Versión Inicial | Descripción / Notas |
 | :--- | :--- | :--- |
 | **Ubuntu Server** | 22.04 LTS | Sistema operativo base de la infraestructura |
+| **HAProxy** | 2.4 | Balanceador de carga y terminación SSL (añadido) |
 | **Apache** | 2.4.60 | Servidor web HTTP/HTTPS |
 | **MySQL Server** | 8.0 | Gestor de base de datos relacional |
 | **PHP** | 8.1 | Intérprete para la aplicación web y de gestión |
 | **Netdata** | 1.39 | Herramienta de monitorización en tiempo real |
 | **UFW** | 0.36 | Cortafuegos para asegurar puertos del sistema |
 | **rsync** | 3.2.7 | Herramienta de replicación para copias de seguridad |
-| **Certbot** | 2.9 | SSL/TLS automático (añadido) |
+| **Certbot** | 2.9 | SSL/TLS automático |
